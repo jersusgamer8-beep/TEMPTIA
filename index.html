@@ -43,10 +43,9 @@
             padding: 20px;
         }
 
-        /* Contenedor Principal Estilo Gabinete Industrial */
         .hmi-chassis {
             width: 100%;
-            max-width: 1150px;
+            max-width: 1200px;
             background: linear-gradient(180deg, #1b1f26 0%, #12151a 100%);
             border: 2px solid #4a5260;
             border-radius: 16px;
@@ -57,7 +56,6 @@
             position: relative;
         }
 
-        /* Tornillos decorativos en las esquinas */
         .screw {
             width: 12px;
             height: 12px;
@@ -78,7 +76,6 @@
         .bl { bottom: 12px; left: 12px; }
         .br { bottom: 12px; right: 12px; }
 
-        /* Cabecera */
         .header {
             display: flex;
             flex-wrap: wrap;
@@ -108,7 +105,6 @@
             font-weight: 600;
         }
 
-        /* Badge de Conexión ESP32 */
         .connection-badge {
             display: flex;
             align-items: center;
@@ -138,7 +134,6 @@
             box-shadow: 0 0 10px var(--status-red);
         }
 
-        /* Grid Principal */
         .dashboard-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -146,7 +141,6 @@
             margin-bottom: 20px;
         }
 
-        /* Tarjetas Acero Inoxidable */
         .steel-panel {
             background: var(--panel-metal);
             border: 1px solid var(--steel-border);
@@ -184,7 +178,6 @@
             font-weight: 700;
         }
 
-        /* Display Digital de Temperatura */
         .temp-display {
             background: #090b0e;
             border: 1px solid #2c333f;
@@ -210,7 +203,6 @@
             margin-left: 4px;
         }
 
-        /* Panel Destacado Promedio */
         .panel-average {
             border-color: var(--electric-blue);
             box-shadow: 0 0 20px rgba(0, 210, 255, 0.12), inset 0 1px 1px rgba(255,255,255,0.3);
@@ -223,7 +215,6 @@
             margin-top: 6px;
         }
 
-        /* Alerta de Error de Sensor */
         .sensor-status {
             font-size: 0.85rem;
             font-weight: 600;
@@ -235,27 +226,26 @@
         .status-ok { color: var(--status-green); background: rgba(0,255,102,0.08); }
         .status-err { color: var(--status-red); background: rgba(255,42,42,0.15); animation: blink 1s infinite; }
 
-        /* Sección Inferior: Relé e Histéresis */
+        /* Sección Inferior: 3 Columnas (Relé 1, Relé 2 Botón, Histéresis) */
         .control-grid {
             display: grid;
-            grid-template-columns: 1fr 1.3fr;
+            grid-template-columns: 1fr 1.1fr 1.2fr;
             gap: 20px;
         }
 
-        /* Luz Piloto Industrial del Relé */
         .relay-box {
             display: flex;
             align-items: center;
-            gap: 22px;
-            padding: 10px 5px;
+            gap: 18px;
+            padding: 8px 0;
         }
 
         .pilot-bezel {
-            width: 76px;
-            height: 76px;
+            width: 68px;
+            height: 68px;
             border-radius: 50%;
             background: linear-gradient(145deg, #b8c2cc, #434b56);
-            padding: 7px;
+            padding: 6px;
             box-shadow: 0 6px 15px rgba(0,0,0,0.8), inset 0 1px 2px #fff;
             flex-shrink: 0;
         }
@@ -268,7 +258,6 @@
             position: relative;
         }
 
-        /* Brillo especular del lente */
         .pilot-lamp::after {
             content: '';
             position: absolute;
@@ -279,42 +268,92 @@
             transform: rotate(-25deg);
         }
 
-        /* Relé DESACTIVADO -> Luz VERDE */
         .lamp-off {
             background: radial-gradient(circle at 40% 40%, #66ff99, #009933 70%, #004d1a 100%);
             box-shadow: 0 0 22px var(--status-green-glow), inset 0 0 10px #003311;
         }
 
-        /* Relé ACTIVADO -> Luz ROJA */
         .lamp-on {
             background: radial-gradient(circle at 40% 40%, #ff8080, #e60000 70%, #660000 100%);
             box-shadow: 0 0 30px var(--status-red-glow), inset 0 0 10px #330000;
             animation: pulse-red 1.6s infinite alternate;
         }
 
+        .lamp-manual {
+            background: radial-gradient(circle at 40% 40%, #ffe082, #ff9900 70%, #663d00 100%);
+            box-shadow: 0 0 25px var(--status-amber-glow), inset 0 0 10px #331f00;
+        }
+
         .relay-info h3 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.3rem;
+            font-size: 1.15rem;
             letter-spacing: 1px;
             margin-bottom: 4px;
         }
 
         .text-relay-on { color: var(--status-red); text-shadow: 0 0 10px var(--status-red-glow); }
         .text-relay-off { color: var(--status-green); text-shadow: 0 0 10px var(--status-green-glow); }
+        .text-relay-manual { color: var(--status-amber); text-shadow: 0 0 10px var(--status-amber-glow); }
+
+        /* Botón Industrial Selector Automático / Manual */
+        .btn-mode {
+            width: 100%;
+            margin-top: 12px;
+            padding: 12px 16px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #ffffff;
+            background: linear-gradient(180deg, #323946 0%, #1c2028 100%);
+            border: 1px solid #647084;
+            border-top: 1px solid #a0aec0;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-mode:hover {
+            border-color: var(--electric-blue);
+            box-shadow: 0 0 15px var(--electric-blue-glow);
+        }
+
+        .btn-mode:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
+        }
+
+        .btn-mode.is-manual {
+            background: linear-gradient(180deg, #b35900 0%, #663300 100%);
+            border-color: var(--status-amber);
+            box-shadow: 0 0 18px var(--status-amber-glow);
+        }
+
+        .btn-mode.is-auto {
+            background: linear-gradient(180deg, #006633 0%, #00331a 100%);
+            border-color: var(--status-green);
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.25);
+        }
 
         /* Indicador de Zona de Histéresis */
         .hysteresis-zones {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-top: 10px;
+            gap: 8px;
+            margin-top: 6px;
         }
 
         .zone-card {
             background: #0d1015;
             border: 1px solid #2b323d;
             border-radius: 8px;
-            padding: 12px 8px;
+            padding: 12px 6px;
             text-align: center;
             opacity: 0.4;
             transition: all 0.35s ease;
@@ -323,16 +362,15 @@
         .zone-card strong {
             display: block;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             margin-bottom: 4px;
         }
 
         .zone-card span {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
         }
 
-        /* Estados Activos de Zona */
         .zone-low.active {
             opacity: 1;
             border-color: var(--status-green);
@@ -357,7 +395,6 @@
         }
         .zone-high.active strong { color: var(--status-red); }
 
-        /* Barra Inferior de Telemetría */
         .footer-bar {
             margin-top: 22px;
             padding-top: 15px;
@@ -383,8 +420,7 @@
             50% { opacity: 0.3; }
         }
 
-        /* Diseño Adaptable (Responsive) */
-        @media (max-width: 900px) {
+        @media (max-width: 1024px) {
             .dashboard-grid { grid-template-columns: 1fr; }
             .control-grid { grid-template-columns: 1fr; }
         }
@@ -417,7 +453,6 @@
 
         <!-- Panel de Sensores y Promedio -->
         <section class="dashboard-grid">
-            <!-- Sensor 1 -->
             <div class="steel-panel">
                 <div class="panel-label">
                     <span>Sensor Temperatura 1</span>
@@ -429,7 +464,6 @@
                 <div id="temp1-status" class="sensor-status status-ok">SINCRONIZANDO...</div>
             </div>
 
-            <!-- Sensor 2 -->
             <div class="steel-panel">
                 <div class="panel-label">
                     <span>Sensor Temperatura 2</span>
@@ -441,7 +475,6 @@
                 <div id="temp2-status" class="sensor-status status-ok">SINCRONIZANDO...</div>
             </div>
 
-            <!-- Promedio -->
             <div class="steel-panel panel-average">
                 <div class="panel-label">
                     <span>Temperatura Promedio</span>
@@ -454,45 +487,67 @@
             </div>
         </section>
 
-        <!-- Panel de Control Automático e Histéresis -->
+        <!-- Panel de Control: Relé 1 (Térmico), Relé 2 (Botón Auto/Manual) e Histéresis -->
         <section class="control-grid">
-            <!-- Estado del Relé -->
+            <!-- Relé 1: Control Térmico Automático -->
             <div class="steel-panel">
                 <div class="panel-label">
-                    <span>Actuador de Salida</span>
+                    <span>Relé 1 (Térmico)</span>
                     <span class="gpio-tag">GPIO 18</span>
                 </div>
                 <div class="relay-box">
                     <div class="pilot-bezel">
-                        <div id="relay-lamp" class="pilot-lamp lamp-off"></div>
+                        <div id="relay1-lamp" class="pilot-lamp lamp-off"></div>
                     </div>
                     <div class="relay-info">
-                        <h3 id="relay-text" class="text-relay-off">RELÉ DESACTIVADO</h3>
-                        <p id="relay-desc" style="color: var(--text-muted); font-size: 0.9rem;">
-                            Control automático autónomo en ESP32
+                        <h3 id="relay1-text" class="text-relay-off">RELÉ DESACTIVADO</h3>
+                        <p style="color: var(--text-muted); font-size: 0.85rem;">
+                            Control automático por histéresis
                         </p>
                     </div>
                 </div>
             </div>
 
+            <!-- Relé 2: Selector Automático / Manual -->
+            <div class="steel-panel">
+                <div class="panel-label">
+                    <span>Relé 2 (Selector Modo)</span>
+                    <span class="gpio-tag">GPIO 19</span>
+                </div>
+                <div class="relay-box">
+                    <div class="pilot-bezel">
+                        <div id="relay2-lamp" class="pilot-lamp lamp-off"></div>
+                    </div>
+                    <div class="relay-info">
+                        <h3 id="relay2-text" class="text-relay-off">MODO AUTOMÁTICO</h3>
+                        <p id="relay2-sub" style="color: var(--text-muted); font-size: 0.85rem;">
+                            Relé 2: Desactivado (OFF)
+                        </p>
+                    </div>
+                </div>
+                <button id="btn-toggle-mode" class="btn-mode is-auto" onclick="alternarModoRele2()">
+                    CAMBIAR A MANUAL
+                </button>
+            </div>
+
             <!-- Indicador de Zona Térmica -->
             <div class="steel-panel">
                 <div class="panel-label">
-                    <span>Estado de Histéresis Térmica</span>
+                    <span>Zona de Histéresis</span>
                     <span class="gpio-tag">20°C — 40°C</span>
                 </div>
                 <div class="hysteresis-zones">
                     <div id="zone-low" class="zone-card zone-low">
                         <strong>&le; 20.0 °C</strong>
-                        <span>ZONA NORMAL<br>(Apaga Relé)</span>
+                        <span>NORMAL<br>(Apaga R1)</span>
                     </div>
                     <div id="zone-hyst" class="zone-card zone-hyst">
-                        <strong>20.1 - 40.0 °C</strong>
-                        <span>HISTÉRESIS<br>(Mantiene Estado)</span>
+                        <strong>20.1 - 40 °C</strong>
+                        <span>HISTÉRESIS<br>(Mantiene)</span>
                     </div>
                     <div id="zone-high" class="zone-card zone-high">
                         <strong>&gt; 40.0 °C</strong>
-                        <span>SOBRETEMPERATURA<br>(Activa Relé)</span>
+                        <span>ALTA TEMP<br>(Activa R1)</span>
                     </div>
                 </div>
             </div>
@@ -500,18 +555,18 @@
 
         <!-- Barra Inferior -->
         <footer class="footer-bar">
-            <span>Modo de Operación: <strong>AUTOMÁTICO (HISTÉRESIS)</strong></span>
+            <span>Proyecto Firebase: <strong>temptia</strong></span>
             <span>Última actualización: <strong id="last-update">--/--/---- --:--:--</strong></span>
         </footer>
     </div>
 
-    <!-- SDK de Firebase (v9 compat para fácil integración en un solo archivo) -->
+    <!-- SDK de Firebase -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
     <script>
         // ============================================================
-        // 1. CONFIGURACIÓN DE FIREBASE (REEMPLAZAR CON TUS CREDENCIALES)
+        // CREDENCIALES DE FIREBASE (PROYECTO TEMPTIA)
         // ============================================================
         const firebaseConfig = {
             apiKey: "AIzaSyCN3CLT0KKpZ688NgmBHTlv9NFUJG5kuKA",
@@ -520,23 +575,28 @@
             projectId: "temptia",
             storageBucket: "temptia.firebasestorage.app",
             messagingSenderId: "757249947825",
-            appId: "1:757249947825:web:b3718fbd561e53bf4fca90"
+            appId: "1:757249947825:web:b3718fbd561e53bf4fca90",
+            measurementId: "G-MGS82T4CYP"
         };
 
-        // Inicializar Firebase
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
         const sistemaRef = database.ref('/sistema_termico');
 
-        // Referencias a elementos del DOM
+        // Elementos del DOM
         const elTemp1 = document.getElementById('temp1-val');
         const elTemp2 = document.getElementById('temp2-val');
         const elAvg = document.getElementById('avg-val');
         const elStatus1 = document.getElementById('temp1-status');
         const elStatus2 = document.getElementById('temp2-status');
         
-        const elRelayLamp = document.getElementById('relay-lamp');
-        const elRelayText = document.getElementById('relay-text');
+        const elRelay1Lamp = document.getElementById('relay1-lamp');
+        const elRelay1Text = document.getElementById('relay1-text');
+
+        const elRelay2Lamp = document.getElementById('relay2-lamp');
+        const elRelay2Text = document.getElementById('relay2-text');
+        const elRelay2Sub = document.getElementById('relay2-sub');
+        const btnToggleMode = document.getElementById('btn-toggle-mode');
         
         const elZoneLow = document.getElementById('zone-low');
         const elZoneHyst = document.getElementById('zone-hyst');
@@ -546,22 +606,33 @@
         const elConnText = document.getElementById('conn-text');
         const elLastUpdate = document.getElementById('last-update');
 
-        let ultimoTimestampRecibido = 0;
+        let estadoManualActual = false; // false = AUTOMÁTICO, true = MANUAL
         let watchdogTimer = null;
 
         // ============================================================
-        // 2. ESCUCHA EN TIEMPO REAL DE FIREBASE
+        // FUNCIÓN DEL BOTÓN: ALTERNAR AUTOMÁTICO / MANUAL (RELÉ 2)
+        // ============================================================
+        function alternarModoRele2() {
+            const nuevoEstado = !estadoManualActual;
+            database.ref('/sistema_termico/rele2_manual').set(nuevoEstado)
+                .catch((error) => {
+                    alert("Error al enviar comando a Firebase: " + error.message);
+                });
+        }
+
+        // ============================================================
+        // ESCUCHA EN TIEMPO REAL DE FIREBASE
         // ============================================================
         sistemaRef.on('value', (snapshot) => {
             const data = snapshot.val();
             if (!data) return;
 
-            // Actualizar Sensor 1
+            // 1. Sensor 1
             if (data.sensor1) {
                 if (data.sensor1.error) {
                     elTemp1.textContent = "ERR";
                     elTemp1.style.color = "var(--status-red)";
-                    elStatus1.textContent = "ERROR DE CONEXIÓN / LECTURA";
+                    elStatus1.textContent = "ERROR DE CONEXIÓN";
                     elStatus1.className = "sensor-status status-err";
                 } else {
                     elTemp1.textContent = parseFloat(data.sensor1.temperatura).toFixed(2);
@@ -571,12 +642,12 @@
                 }
             }
 
-            // Actualizar Sensor 2
+            // 2. Sensor 2
             if (data.sensor2) {
                 if (data.sensor2.error) {
                     elTemp2.textContent = "ERR";
                     elTemp2.style.color = "var(--status-red)";
-                    elStatus2.textContent = "ERROR DE CONEXIÓN / LECTURA";
+                    elStatus2.textContent = "ERROR DE CONEXIÓN";
                     elStatus2.className = "sensor-status status-err";
                 } else {
                     elTemp2.textContent = parseFloat(data.sensor2.temperatura).toFixed(2);
@@ -586,7 +657,7 @@
                 }
             }
 
-            // Actualizar Promedio y Color Dinámico
+            // 3. Promedio
             const hayError = (data.sensor1 && data.sensor1.error) || (data.sensor2 && data.sensor2.error);
             const promedio = parseFloat(data.promedio || 0);
 
@@ -607,18 +678,36 @@
                 }
             }
 
-            // Actualizar Indicador Visual del Relé
+            // 4. Relé 1 (Térmico Automático)
             if (data.rele === true) {
-                elRelayLamp.className = "pilot-lamp lamp-on";
-                elRelayText.textContent = "RELÉ ACTIVADO";
-                elRelayText.className = "text-relay-on";
+                elRelay1Lamp.className = "pilot-lamp lamp-on";
+                elRelay1Text.textContent = "RELÉ ACTIVADO";
+                elRelay1Text.className = "text-relay-on";
             } else {
-                elRelayLamp.className = "pilot-lamp lamp-off";
-                elRelayText.textContent = "RELÉ DESACTIVADO";
-                elRelayText.className = "text-relay-off";
+                elRelay1Lamp.className = "pilot-lamp lamp-off";
+                elRelay1Text.textContent = "RELÉ DESACTIVADO";
+                elRelay1Text.className = "text-relay-off";
             }
 
-            // Actualizar Zona de Histéresis
+            // 5. Relé 2 (Selector Automático / Manual)
+            estadoManualActual = (data.rele2_manual === true);
+            if (estadoManualActual) {
+                elRelay2Lamp.className = "pilot-lamp lamp-manual";
+                elRelay2Text.textContent = "MODO MANUAL";
+                elRelay2Text.className = "text-relay-manual";
+                elRelay2Sub.textContent = "Relé 2: ACTIVADO (ON)";
+                btnToggleMode.textContent = "CAMBIAR A AUTOMÁTICO";
+                btnToggleMode.className = "btn-mode is-manual";
+            } else {
+                elRelay2Lamp.className = "pilot-lamp lamp-off";
+                elRelay2Text.textContent = "MODO AUTOMÁTICO";
+                elRelay2Text.className = "text-relay-off";
+                elRelay2Sub.textContent = "Relé 2: DESACTIVADO (OFF)";
+                btnToggleMode.textContent = "CAMBIAR A MANUAL";
+                btnToggleMode.className = "btn-mode is-auto";
+            }
+
+            // 6. Zona de Histéresis
             elZoneLow.classList.remove('active');
             elZoneHyst.classList.remove('active');
             elZoneHigh.classList.remove('active');
@@ -633,16 +722,15 @@
                 }
             }
 
-            // Actualizar Fecha y Hora local de recepción
+            // 7. Fecha y Hora y Estado de Conexión ESP32
             const ahora = new Date();
             elLastUpdate.textContent = ahora.toLocaleDateString('es-EC') + ' ' + ahora.toLocaleTimeString('es-EC');
 
-            // Marcar ESP32 como conectado y reiniciar temporizador de vigilancia (Watchdog)
             setEstadoConexion(true);
             clearTimeout(watchdogTimer);
             watchdogTimer = setTimeout(() => {
                 setEstadoConexion(false);
-            }, 8000); // Si pasan 8 segundos sin recibir datos nuevos, marca desconectado
+            }, 8000);
         });
 
         function setEstadoConexion(conectado) {
